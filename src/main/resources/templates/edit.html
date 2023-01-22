@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Редактировать футболиста</h1>
+    <form action="/edit" th:action="${'/edit/' + id}" method="post" id="footballer-info">
+        <input type="text" name="lastName" id="lastName" placeholder="Фамилия футболиста" th:value="${footballer.lastName}" required>
+        <input type="text" name="name" id="name" placeholder="Имя футболиста" th:value="${footballer.name}" required>
+        <input type="text" name="secondName" id="secondName" placeholder="Отчество футболиста" th:value="${footballer.secondName}">
+        <input type="date" name="birthdate" id="birthdate" th:value="${footballer.birthdate}" required>
+        <select name="country" id="country" form="footballer-info" required>
+            <option selected disabled></option>
+            <option th:each="country : ${countries}" th:text="${country.getName()}" th:value="${country.getName()}" th:selected="${footballer.club==club}"></option>
+        </select>
+        <!--        <select name="club" id="club" form="footballer-info">-->
+        <!--            <option th:each="club : ${clubs}" th:text="${club.getName()}" th:value="${club.getName()}"></option>-->
+        <!--        </select>-->
+        <div class="search">
+            <input type="text" id="club" name="club" required>
+            <div class="search-list-block">
+                <select id="search-list">
+                    <option selected disabled></option>
+                    <option th:each="club : ${clubs}" th:text="${club.getName()}" th:value="${club.getName()}" th:selected="${footballer.club==club}">Russia</option>
+
+                </select>
+            </div>
+        </div>
+        <input type="submit" id="submit-button" value="Изменить">
+        <a href="/" class="add-link">Назад к списку</a>
+    </form>
+
+</body>
+<script th:inline="javascript">
+    var isAdd = false;
+    var selectedClub = /*[[${footballer.club}]]*/;
+    var selectedCountry = /*[[${footballer.country}]]*/;
+
+</script>
+<script src="/dd-club.js"></script>
+
+</html>
