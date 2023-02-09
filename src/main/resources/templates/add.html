@@ -14,7 +14,14 @@
         <input type="text" name="lastName" id="lastName" placeholder="Фамилия футболиста" required>
         <input type="text" name="name" id="name" placeholder="Имя футболиста" required>
         <input type="text" name="secondName" id="secondName" placeholder="Отчество футболиста">
+        <label for="birthdate">Введите дату рождения:</label>
         <input type="date" name="birthdate" id="birthdate" required>
+        <label for="gender">Выберите пол</label>
+        <select name="gender" id="gender" required form="footballer-info">
+            <option value="Мужской">Мужской</option>
+            <option value="Женский">Женский</option>
+        </select>
+        <label for="country">Выберите страну: </label>
         <select name="country" id="country" form="footballer-info" required>
             <option selected disabled></option>
             <option th:each="country : ${countries}" th:text="${country.getName()}" th:value="${country.getName()}"></option>
@@ -23,7 +30,7 @@
 <!--            <option th:each="club : ${clubs}" th:text="${club.getName()}" th:value="${club.getName()}"></option>-->
 <!--        </select>-->
         <div class="search">
-            <input type="text" id="club" name="club" required>
+            <input type="text" id="club" name="club" required placeholder="Выберите клуб или добавьте новый">
             <div class="search-list-block">
                 <select id="search-list">
                     <option selected disabled></option>

@@ -2,8 +2,6 @@ package com.example.test66bit.Entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Country {
@@ -12,6 +10,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name="name")
     private String name;
 
 

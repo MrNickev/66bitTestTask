@@ -14,7 +14,14 @@
         <input type="text" name="lastName" id="lastName" placeholder="Фамилия футболиста" th:value="${footballer.lastName}" required>
         <input type="text" name="name" id="name" placeholder="Имя футболиста" th:value="${footballer.name}" required>
         <input type="text" name="secondName" id="secondName" placeholder="Отчество футболиста" th:value="${footballer.secondName}">
+        <label for="birthdate">Введите дату рождения:</label>
         <input type="date" name="birthdate" id="birthdate" th:value="${footballer.birthdate}" required>
+        <label for="gender">Выберите пол</label>
+        <select name="gender" th:field="*{footballer.gender}" id="gender" required form="footballer-info">
+            <option value="Мужской">Мужской</option>
+            <option value="Женский">Женский</option>
+        </select>
+        <label for="country">Выберите страну: </label>
         <select name="country" id="country" form="footballer-info" required>
             <option selected disabled></option>
             <option th:each="country : ${countries}" th:text="${country.getName()}" th:value="${country.getName()}" th:selected="${footballer.club==club}"></option>

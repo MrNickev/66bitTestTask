@@ -29,6 +29,9 @@ public class Footballer {
     @ManyToOne
     private Country country;
 
+    @Column(name = "gender")
+    private Gender gender;
+
     @ManyToOne
     private Club club;
 
@@ -42,6 +45,7 @@ public class Footballer {
         lastName = footballerDTO.getLastName();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         birthdate = format.parse(footballerDTO.getBirthdate());
+        gender = Gender.fromString(footballerDTO.getGender());
     }
 
     public Integer getId() {
@@ -99,4 +103,14 @@ public class Footballer {
     public void setClub(Club club) {
         this.club = club;
     }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 }
+
+

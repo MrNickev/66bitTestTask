@@ -16,6 +16,7 @@ public class FootballerDTO {
     private String birthdate;
     private String country;
     private String club;
+    private String gender;
 
     public FootballerDTO() {
     }
@@ -29,6 +30,7 @@ public class FootballerDTO {
         birthdate = format.format(footballer.getBirthdate());
         country = footballer.getCountry().getName();
         club = footballer.getClub().getName();
+        gender = footballer.getGender().toString();
     }
 
     public Integer getId() {
@@ -85,5 +87,13 @@ public class FootballerDTO {
 
     public void setClub(String club) {
         this.club = club;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

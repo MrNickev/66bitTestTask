@@ -1,7 +1,6 @@
 package com.example.test66bit.Controllers;
 
 import com.example.test66bit.DTO.FootballerDTO;
-import com.example.test66bit.Entities.Footballer;
 import com.example.test66bit.Services.ClubService;
 import com.example.test66bit.Services.CountryService;
 import com.example.test66bit.Services.FootballerService;
@@ -12,16 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
-import java.util.Objects;
 import java.util.Optional;
 
 @Controller
 public class MainController {
     @Value("${limit}")
     private Integer limit;
-    private FootballerService footballerService;
-    private CountryService countryService;
-    private ClubService clubService;
+    private final FootballerService footballerService;
+    private final CountryService countryService;
+    private final ClubService clubService;
 
     public MainController(FootballerService footballerService, CountryService countryService, ClubService clubService) {
         this.footballerService = footballerService;
@@ -68,7 +66,7 @@ public class MainController {
     public ModelAndView updateFootballer(@PathVariable("id") Integer id, FootballerDTO footballerDTO) throws ParseException {
         footballerDTO.setId(id);
         System.out.println("footballerDTO.country is " + footballerDTO.getCountry() + " id is " + footballerDTO.getId());
-        footballerService.updateFootballerFromDTO(footballerDTO);
+        footballerService.saveFromDto(footballerDTO);
         return new ModelAndView("redirect:/");
     }
 }
